@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Текущая дата</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        p {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Текущая дата</h2>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var daysOfWeek = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
+        var months = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+
+        var currentDate = new Date();
+
+        var dayOfWeek = daysOfWeek[currentDate.getDay()];
+        var dayOfMonth = currentDate.getDate();
+        var month = months[currentDate.getMonth()];
+        var year = currentDate.getFullYear();
+
+        var dateInfo = dayOfWeek + ', ' + dayOfMonth + ' ' + month + ' ' + year;
+
+        var dateParagraph = document.createElement('p');
+        dateParagraph.textContent = dateInfo;
+
+        document.body.appendChild(dateParagraph);
+    });
+</script>
+
+</body>
+</html>

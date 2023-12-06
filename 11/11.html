@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вычисление площади прямоугольника</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        label {
+            font-size: 20px;
+        }
+
+        input {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        p {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Укажите длину и ширину прямоугольника</h2>
+
+<label for="length">Длина:</label>
+<input type="number" id="length" required>
+
+<label for="width">Ширина:</label>
+<input type="number" id="width" required>
+
+<button onclick="calculateRectangleArea()">Вычислить площадь</button>
+
+<p id="result"></p>
+
+<script>
+    function calculateRectangleArea() {
+        var lengthInput = document.getElementById('length');
+        var widthInput = document.getElementById('width');
+        var resultParagraph = document.getElementById('result');
+
+        var length = parseFloat(lengthInput.value);
+        var width = parseFloat(widthInput.value);
+
+        if (!isNaN(length) && !isNaN(width) && length > 0 && width > 0) {
+            var area = length * width;
+            resultParagraph.textContent = 'Площадь прямоугольника: ' + area;
+        } else {
+            resultParagraph.textContent = 'Пожалуйста, введите корректные значения для длины и ширины.';
+        }
+    }
+</script>
+
+</body>
+</html>
+

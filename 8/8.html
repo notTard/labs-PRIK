@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расстояние до начала координат</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        label {
+            font-size: 20px;
+        }
+        input {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+ 
+    </style>
+</head>
+<body>
+<h2>Расстояние до начала координат</h2>
+<label for="x">Введите координату x:</label>
+<input type="number" id="x" required>
+<label for="y">Введите координату y:</label>
+<input type="number" id="y" required>
+<button onclick="calculateDistance()">Рассчитать расстояние</button>
+<p id="result"></p>
+<script>
+    function calculateDistance() {
+        var xInput = document.getElementById('x');
+        var yInput = document.getElementById('y');
+        var resultParagraph = document.getElementById('result');
+        var x = parseFloat(xInput.value);
+        var y = parseFloat(yInput.value);
+        if (!isNaN(x) && !isNaN(y)) {
+            var distance = Math.sqrt(x * x + y * y);
+            resultParagraph.textContent = 'Расстояние до начала координат: ' + distance.toFixed(2);
+        } else {
+            resultParagraph.textContent = 'Пожалуйста, введите корректные координаты.';
+        }
+    }
+</script>
+</body>
+</html>

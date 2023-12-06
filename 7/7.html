@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Количество дней жизни</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        label {
+            font-size: 20px;
+        }
+
+        input {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        p {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Количество дней жизни</h2>
+
+<label for="birthdate">Введите дату рождения:</label>
+<input type="date" id="birthdate">
+
+<button onclick="calculateDays()">Рассчитать</button>
+
+<p id="result"></p>
+
+<script>
+    function calculateDays() {
+        var birthdateInput = document.getElementById('birthdate');
+        var resultParagraph = document.getElementById('result');
+
+        var birthdate = new Date(birthdateInput.value);
+        var currentDate = new Date();
+
+        var timeDiff = Math.abs(currentDate - birthdate);
+        var days = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+
+        resultParagraph.textContent = 'Вы прожили ' + days + ' дней.';
+    }
+</script>
+
+</body>
+</html>

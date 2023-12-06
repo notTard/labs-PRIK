@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Художественная галерея</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        form {
+            display: inline-block;
+            text-align: left;
+        }
+        label {
+            font-size: 18px;
+        }
+        input[type="text"], select {
+            font-size: 16px;
+            margin-bottom: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<h2>Художественная галерея</h2>
+<form id="artForm">
+    <label for="artist">Художник:</label>
+    <select id="artist">
+        <option value="Айвазовский">Айвазовский</option>
+        <option value="Тропинин">Тропинин</option>
+        <option value="Репин">Репин</option>
+    </select>
+    <label for="signature">Подпись:</label>
+    <input type="text" id="signature" required>
+    <label>Выберите картину:</label>
+    <input type="radio" id="portrait1" name="portrait" value="portrait1.jpg">
+    <label for="portrait1">Айвазовский</label>
+    <input type="radio" id="portrait2" name="portrait" value="portrait2.jpg">
+    <label for="portrait2">Репин</label>
+    <input type="radio" id="portrait3" name="portrait" value="portrait3.jpg">
+    <label for="portrait3">Тропинин</label>
+    <label>Декорирование текста:</label>
+    <input type="checkbox" id="italic" value="italic"> <label for="italic">Курсив</label>
+    <input type="checkbox" id="underline" value="underline"> <label for="underline">Подчеркнутый</label>
+    <input type="checkbox" id="bold" value="bold"> <label for="bold">Жирный</label>
+    <button type="button" onclick="showArtwork()">Показать</button>
+</form>
+<script>
+    function showArtwork() {
+        var artist = document.getElementById('artist').value;
+        var signature = document.getElementById('signature').value;
+        var portrait = document.querySelector('input[name="portrait"]:checked');
+        var italic = document.getElementById('italic').checked;
+        var underline = document.getElementById('underline').checked;
+        var bold = document.getElementById('bold').checked;
+
+        var popupContent = '<html><head><style>body {font-family: Arial, sans-serif;text-align: center;margin: 50px;}</style></head><body>';
+        popupContent += '<h2>' + artist + '</h2>';
+        
+        if (portrait) {
+            popupContent += '<img src="' + portrait.value + '" alt="' + portrait.value + '" style="max-width: 300px; margin: 10px;">';
+        }
+
+        if (italic) popupContent += '<i>';
+        if (underline) popupContent += '<u>';
+        if (bold) popupContent += '<b>';
+
+        popupContent += '<p>' + signature + '</p>';
+
+        if (bold) popupContent += '</b>';
+        if (underline) popupContent += '</u>';
+        if (italic) popupContent += '</i>';
+
+        popupContent += '</body></html>';
+
+        var newWindow = window.open('', '_blank');
+        newWindow.document.write(popupContent);
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анкета</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;}
+        form {
+            display: inline-block;
+            text-align: left;}
+        label {
+            font-size: 18px;
+            display: block;
+            margin-bottom: 5px;}
+        input[type="text"], input[type="number"] {
+            font-size: 16px;
+            margin-bottom: 10px;
+            width: 100%;
+            box-sizing: border-box;}
+    </style>
+</head>
+<body>
+<h2>Анкета</h2>
+<form id="bioForm">
+    <label for="lastName">Фамилия:</label>
+    <input type="text" id="lastName" required>
+    <label for="firstName">Имя:</label>
+    <input type="text" id="firstName" required>
+    <label for="middleName">Отчество:</label>
+    <input type="text" id="middleName" required>
+    <label for="birthYear">Год рождения:</label>
+    <input type="number" id="birthYear" required>
+    <label for="birthPlace">Место рождения:</label>
+    <input type="text" id="birthPlace" required>
+    <label for="hobby">Любимое занятие:</label>
+    <input type="text" id="hobby" required>
+    <label for="dislike">Не любимое занятие:</label>
+    <input type="text" id="dislike" required>
+    <button type="button" onclick="generateBiography()">Сформировать биографию</button>
+</form>
+<script>
+    function generateBiography() {
+        var lastName = document.getElementById('lastName').value;
+        var firstName = document.getElementById('firstName').value;
+        var middleName = document.getElementById('middleName').value;
+        var birthYear = document.getElementById('birthYear').value;
+        var birthPlace = document.getElementById('birthPlace').value;
+        var hobby = document.getElementById('hobby').value;
+        var dislike = document.getElementById('dislike').value;
+        var biographyContent = '<html><head><style>body {font-family: Arial, sans-serif;text-align: center;margin: 50px;}</style></head><body>';
+        biographyContent += '<h2>Биография</h2>';
+        biographyContent += '<p>Я, ' + lastName + ' ' + firstName + ' ' + middleName + ' родился в ' + birthYear + ' году в городе ' + birthPlace + '</p>';
+        biographyContent += '<p>Больше всего я люблю ' + hobby + ', но к сожалению, часто приходится ' + dislike + ' вместо этого</p>';
+        biographyContent += '</body></html>';
+        var newWindow = window.open('', '_blank');
+        newWindow.document.write(biographyContent);}
+</script></body></html>

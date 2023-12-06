@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор сказок</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        form {
+            display: inline-block;
+            text-align: left;
+        }
+
+        label {
+            font-size: 18px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            font-size: 16px;
+            margin-bottom: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Генератор сказок</h2>
+
+<form id="fairytaleForm">
+    <label for="heroName">Имя героя:</label>
+    <input type="text" id="heroName" required>
+
+    <label for="heroActivity">Любимое занятие героя:</label>
+    <input type="text" id="heroActivity" required>
+
+    <label for="heroFriend">Друг героя:</label>
+    <input type="text" id="heroFriend" required>
+
+    <label for="heroGift">Любимый подарок героя:</label>
+    <input type="text" id="heroGift" required>
+
+    <button type="button" onclick="generateFairytale()">Сгенерировать сказку</button>
+</form>
+
+<script>
+    function generateFairytale() {
+        var heroName = document.getElementById('heroName').value;
+        var heroActivity = document.getElementById('heroActivity').value;
+        var heroFriend = document.getElementById('heroFriend').value;
+        var heroGift = document.getElementById('heroGift').value;
+
+        var fairytaleContent = '<html><head><style>body {font-family: Arial, sans-serif;text-align: center;margin: 50px;}</style></head><body>';
+        fairytaleContent += '<h2>Сказка</h2>';
+        fairytaleContent += '<p>Жил-был ' + heroName + ', который любил заниматься ' + heroActivity + '. ';
+        fairytaleContent += 'У него был друг по имени ' + heroFriend + '. ';
+        fairytaleContent += 'Однажды ' + heroName + ' получил в подарок свой любимый подарок - ' + heroGift + '. ';
+        fairytaleContent += 'И они жили долго и счастливо.</p>';
+        fairytaleContent += '</body></html>';
+
+        var newWindow = window.open('', '_blank');
+        newWindow.document.write(fairytaleContent);
+    }
+</script>
+
+</body>
+</html>

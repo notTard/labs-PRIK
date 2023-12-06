@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>До каникул</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        label {
+            font-size: 20px;
+        }
+
+        input {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        p {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Укажите дату начала каникул</h2>
+
+<label for="vacationDate">Дата начала каникул:</label>
+<input type="date" id="vacationDate" required>
+
+<button onclick="displayDaysUntilVacation()">Показать дни до каникул</button>
+
+<p id="result"></p>
+
+<script>
+    function displayDaysUntilVacation() {
+        var vacationDateInput = document.getElementById('vacationDate');
+        var resultParagraph = document.getElementById('result');
+
+        var today = new Date();
+        var vacationDate = new Date(vacationDateInput.value);
+
+        if (!isNaN(vacationDate.getTime())) {
+            var timeUntilVacation = vacationDate - today;
+            var daysUntilVacation = Math.ceil(timeUntilVacation / (1000 * 60 * 60 * 24));
+
+            if (daysUntilVacation >= 0) {
+                resultParagraph.textContent = 'Дней до каникул: ' + daysUntilVacation;
+            } else {
+                resultParagraph.textContent = 'Каникулы уже начались!';
+            }
+        } else {
+            resultParagraph.textContent = 'Пожалуйста, введите корректную дату начала каникул.';
+        }
+    }
+</script>
+
+</body>
+</html>

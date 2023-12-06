@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Животные</title>
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+            color: #333;
+            text-align: center;
+            margin: 50px;
+        }
+        table {
+            width: 30%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 15px;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        img {
+            width: 100px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<h2>Животные</h2>
+<table>
+    <tr onmouseover="showImage('1.jpg')" onmouseout="hideImage()">
+        <td>Свинк</td>
+    </tr>
+    <tr onmouseover="showImage('2.jpg')" onmouseout="hideImage()">
+        <td>Лягушка</td>
+    </tr>
+    <tr onmouseover="showImage('3.jpg')" onmouseout="hideImage()">
+        <td>Собака</td>
+    </tr>
+    <tr>
+        <td colspan="3"><img id="animalImage" src="1.jpg" alt="Empty"></td>
+    </tr>
+</table>
+<script>
+    function showImage(imageSrc) {
+        document.getElementById('animalImage').src = imageSrc;
+    }
+    function hideImage() {
+        document.getElementById('animalImage').src = 'empty-1.gif';
+    }
+</script>
+</body>
+</html>

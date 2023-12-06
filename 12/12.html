@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма заказа картинок</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        form {
+            display: inline-block;
+            text-align: left;
+        }
+
+        label {
+            font-size: 18px;
+        }
+
+        input[type="text"], select {
+            font-size: 16px;
+            margin-bottom: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Форма заказа картинок</h2>
+
+<form id="orderForm">
+    <label for="title">Заголовок:</label>
+    <input type="text" id="title" required>
+
+    <label>Выберите картинки:</label>
+    <input type="checkbox" id="dogCheckbox" value="dog.jpg">
+    <label for="dogCheckbox">Dog</label>
+    <input type="checkbox" id="bigDaisyCheckbox" value="bigdaisy.jpg">
+    <label for="bigDaisyCheckbox">Big Daisy</label>
+    <input type="checkbox" id="flowerCheckbox" value="flower.jpg">
+    <label for="flowerCheckbox">Flower</label>
+
+    <label for="subtitle">Подпись:</label>
+    <input type="text" id="subtitle" required>
+
+    <label>Цвет фона:</label>
+    <select id="bgColor">
+        <option value="lightblue">Светло-голубой</option>
+        <option value="lightgreen">Светло-зеленый</option>
+        <option value="lightpink">Светло-розовый</option>
+    </select>
+
+    <label>Цвет текста:</label>
+    <select id="textColor">
+        <option value="black">Черный</option>
+        <option value="red">Красный</option>
+        <option value="blue">Синий</option>
+    </select>
+
+    <button type="button" onclick="showImages()">Показать</button>
+</form>
+
+<script>
+    function showImages() {
+        var title = document.getElementById('title').value;
+        var dogChecked = document.getElementById('dogCheckbox').checked;
+        var bigDaisyChecked = document.getElementById('bigDaisyCheckbox').checked;
+        var flowerChecked = document.getElementById('flowerCheckbox').checked;
+        var subtitle = document.getElementById('subtitle').value;
+        var bgColor = document.getElementById('bgColor').value;
+        var textColor = document.getElementById('textColor').value;
+
+        var images = [];
+        if (dogChecked) images.push('dog.jpg');
+        if (bigDaisyChecked) images.push('bigdaisy.jpg');
+        if (flowerChecked) images.push('flower.jpg');
+
+        var popupContent = '<html><head><style>body {font-family: Arial, sans-serif;text-align: center;margin: 50px;background-color: ' + bgColor + ';color: ' + textColor + ';}</style></head><body>';
+        popupContent += '<h2>' + title + '</h2>';
+
+        images.forEach(function(image) {
+            popupContent += '<img src="' + image + '" alt="' + image + '" style="max-width: 300px; margin: 10px;">';
+            popupContent += '<p>' + subtitle + '</p>';
+        });
+
+        popupContent += '</body></html>';
+
+        var newWindow = window.open('', '_blank');
+        newWindow.document.write(popupContent);
+    }
+</script>
+
+</body>
+</html>

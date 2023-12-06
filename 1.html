@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Car Gallery</title>
+<style>
+body {
+background-color: #f4f4f4;
+font-family: Arial, sans-serif;
+color: #333;
+text-align: center;
+}
+
+#carGallery {
+display: flex;
+gap: 20px;
+justify-content: center;
+margin-top: 50px;
+}
+
+.car {
+position: relative;
+cursor: pointer;
+}
+
+.car img {
+width: 200px;
+height: 120px;
+border: 1px solid #ccc;
+border-radius: 8px;
+}
+
+#carInfo {
+width: 300px;
+margin: 20px auto;
+padding: 10px;
+background-color: #fff;
+border: 1px solid #ccc;
+border-radius: 8px;
+display: none;
+}
+</style>
+</head>
+<body>
+
+<div id="carGallery">
+    <div class="car" onmouseover="showInfo('MqQueen', '$1,000')" onmouseout="hideInfo()">
+        <img src="car1.jpg" alt="Car 1">
+    </div>
+    <div class="car" onmouseover="showInfo('Mustang', '$40,000')" onmouseout="hideInfo()">
+        <img src="car2.jpg" alt="Car 2">
+    </div>
+    <div class="car" onmouseover="showInfo('Hummer', '$32,000')" onmouseout="hideInfo()">
+        <img src="car3.jpg" alt="Car 2">
+    </div>
+</div>
+
+<div id="carInfo"></div>
+
+<script>
+function showInfo(carName, carPrice) {
+const infoElement = document.getElementById('carInfo');
+infoElement.innerHTML = `Car: ${carName}
+Price: ${carPrice}`;
+infoElement.style.display = 'block';
+}
+
+function hideInfo() {
+const infoElement = document.getElementById('carInfo');
+infoElement.style.display = 'none';
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дата рождения</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        label {
+            font-size: 20px;
+        }
+
+        input {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        p {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Введите вашу дату рождения</h2>
+
+<label for="birthdate">Дата рождения:</label>
+<input type="date" id="birthdate" required>
+
+<button onclick="displayDateDetails()">Показать дату</button>
+
+<p id="result"></p>
+
+<script>
+    function displayDateDetails() {
+        var birthdateInput = document.getElementById('birthdate');
+        var resultParagraph = document.getElementById('result');
+
+        var birthdate = new Date(birthdateInput.value);
+        var daysOfWeek = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
+        var months = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+
+        if (!isNaN(birthdate.getTime())) {
+            var dayOfWeek = daysOfWeek[birthdate.getDay()];
+            var day = birthdate.getDate();
+            var month = months[birthdate.getMonth()];
+            var year = birthdate.getFullYear();
+
+            resultParagraph.textContent = 'Я родился: ' + dayOfWeek + ', ' + day + ' ' + month + ' ' + year;
+        } else {
+            resultParagraph.textContent = 'Пожалуйста, введите корректную дату рождения.';
+        }
+    }
+</script>
+
+</body>
+</html>
